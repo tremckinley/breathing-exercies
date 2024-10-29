@@ -64,3 +64,10 @@ body {
 footer {
   margin-top: 80px;
 }
+
+#restart {
+  color: #6366f1;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}

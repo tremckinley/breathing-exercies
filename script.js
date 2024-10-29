@@ -1,7 +1,7 @@
 const startButton = document.getElementById("counter");
 const innerCircle = document.getElementById("inner-circle");
 const title = document.querySelector("h1");
-let milliseconds = 1000;
+
 
 function fillBar() {
   innerCircle.style.height = "18em";
@@ -15,6 +15,7 @@ function emptyBar() {
 
 function activateTimer(breathTime) {
 //function for calling repeated setTimeout functions. time is added to the same variable to mimmick a sleep function cleanly. seconds variable is multiplied by 1000 to simplify the argument.
+  let milliseconds = 1000;
   function nextLine(action, seconds) {
   setTimeout(action, milliseconds);
   milliseconds += seconds*1000;
@@ -30,7 +31,7 @@ function activateTimer(breathTime) {
     //hold
     //empty bar over 4 seconds
     //hold
-  for (let i=0; i<2; i++) {
+  for (let i=0; i<3; i++) {
     nextLine(() => {
       counter.innerHTML = "Breathe In"
       fillBar()  
@@ -52,4 +53,13 @@ function activateTimer(breathTime) {
 
 
 // activate on button click
-startButton.onclick = () => activateTimer(4);
+startButton.onclick = () => {
+    if (counter.innerHTML == "Start" || counter.innerHTML == "Great Job") {
+      activateTimer(4);
+    };
+  };
+
+//restart button
+document.getElementById('restart').onclick = () => {
+  location.reload();
+}
