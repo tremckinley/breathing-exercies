@@ -6,6 +6,20 @@ body {
   text-align: center;
 }
 
+select {
+  font: inherit;
+  text-align: center;
+  background-color: white;
+  margin-left: 10px;
+  border-radius: 10px;
+  display: inline;
+
+}
+
+select::after {
+  font-size: x-large;
+}
+
 .outer-circle {
   display: flex;
   justify-content: center;
@@ -80,4 +94,10 @@ footer {
 #restart:hover {
   background-color: #7c3aed;
   border: 2px solid #2e1065
+}
+
+#breathing-exercise-selector {
+  background-color: gainsboro;
+  font-weight: bold;
+  color: darkslategray;
 }

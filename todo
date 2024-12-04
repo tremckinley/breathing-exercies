@@ -1,4 +1,12 @@
 - Add dropdown with breathing types
 - Get info on breathing patterns
 - Get a way to clear the timeouts
-- Create variables for each rotation of breathing to enable customization.
+- Create variables for each rotation of breathing to enable customization. DONE
+
+Breathing style object:
+Name of style
+Description
+Inhale time
+hold time
+exhale time
+hold time
