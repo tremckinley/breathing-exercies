@@ -63,7 +63,7 @@ option {
   background: #FFFFFF90;
   border-radius: 100%;
   transition: height width;
-  transition-duration: 4000ms;
+  /* transition-duration: 4000ms; */
   transition-timing-function: linear;
 }
 

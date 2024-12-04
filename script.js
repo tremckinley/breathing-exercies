@@ -4,9 +4,6 @@ const title = document.querySelector("h1");
 const dropDown = document.getElementById("breathing-exercise-selector");
 const selection = dropDown.value;
 
-
-
-
 const breathingExercises = [
   {
     name: "Focus",
@@ -22,23 +19,23 @@ const breathingExercises = [
     inhaleTimeInSeconds: 5,
     holdTimeOne: 7,
     exhaleTimeInSeconds: 8,
-    holdTimeTwo: 1
+    holdTimeTwo: 0
   },
   {
     name: "Energy Boost",
     description: "&#128293;Increase alertness and energy!&#128293;",
     inhaleTimeInSeconds: 8,
-    holdTimeOne: 1,
+    holdTimeOne: 0,
     exhaleTimeInSeconds: 1,
-    holdTimeTwo: 1
+    holdTimeTwo: 0
   },
   {
     name: "Deep Calm",
     description: "&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;Enter a state of deep relaxation.&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;",
     inhaleTimeInSeconds: 6,
-    holdTimeOne: 1,
+    holdTimeOne: 0,
     exhaleTimeInSeconds: 9,
-    holdTimeTwo: 1
+    holdTimeTwo: 0
   },
   {
     name: "Sleep",
@@ -46,7 +43,7 @@ const breathingExercises = [
     inhaleTimeInSeconds: 7,
     holdTimeOne: 7,
     exhaleTimeInSeconds: 9,
-    holdTimeTwo: 1
+    holdTimeTwo: 0
   }
 ];
 
@@ -62,13 +59,13 @@ dropDown.addEventListener('change', function() {
 //need to fix inner circle transistion durations
 
 function fillBar(transTime) {
-  innerCircle.style.transitionDuration = toString(transTime) + 'ms';
+  innerCircle.style.transitionDuration = `${transTime}s`;
   innerCircle.style.height = "18em";
   innerCircle.style.width = "18em";
 }
 
 function emptyBar(transTime) {
-  innerCircle.style.transitionDuration = toString(transTime) + 'ms';
+  innerCircle.style.transitionDuration = `${transTime}s`;
   innerCircle.style.height = "6em";
   innerCircle.style.width = "6em";
 };
@@ -80,6 +77,8 @@ function activateTimer(style) {
   setTimeout(action, milliseconds);
   milliseconds += seconds*1000;
   };
+
+  console.log(style.inhaleTimeInSeconds, style.exhaleTimeInSeconds, style.holdTimeOne, style.holdTimeTwo)
 
   counter.innerHTML = "Let's Begin"
     nextLine(() => counter.innerHTML = "3", 1);
@@ -95,7 +94,7 @@ function activateTimer(style) {
     //Breathe In
     nextLine(() => {
       counter.innerHTML = "Breathe In"
-      fillBar(9000)  
+      fillBar(style.inhaleTimeInSeconds)  
     }, style.inhaleTimeInSeconds);
 
     //First Hold
@@ -108,7 +107,7 @@ function activateTimer(style) {
     //Breath Out
     nextLine(() => {
       counter.innerHTML = "Breathe Out"
-      emptyBar(0)  
+      emptyBar(style.exhaleTimeInSeconds)  
     }, style.exhaleTimeInSeconds);
 
     //Second Hold
@@ -118,6 +117,8 @@ function activateTimer(style) {
   }
   //End with a compliment
   nextLine(() => counter.innerHTML = "Great Job", 1);
+  dropDown.style.pointerEvents = "auto"
+  dropDown.style.appearance = "auto"
 }
 
 
@@ -127,6 +128,8 @@ startButton.onclick = () => {
     if (counter.innerHTML == "Start" || counter.innerHTML == "Great Job") {
       console.log("breathing:", breathingStyle)
       activateTimer(breathingStyle);
+      dropDown.style.pointerEvents = "none"
+      dropDown.style.appearance = "none"
     };
   };
 
