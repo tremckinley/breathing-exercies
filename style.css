@@ -149,6 +149,12 @@ footer {
   .instructions {
     margin: 40px;
   }
+
+  body {
+    margin: 0;
+    height: 100%;
+    border-radius: 0;
+  }
   
   footer {
     margin-top: 3em;
