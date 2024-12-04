@@ -11,7 +11,8 @@ const breathingExercises = [
     inhaleTimeInSeconds: 4,
     holdTimeOne: 4,
     exhaleTimeInSeconds: 4,
-    holdTimeTwo: 4
+    holdTimeTwo: 4,
+    bgColor: "#7c3aed"
   },
   {
     name: "Relaxation",
@@ -19,7 +20,8 @@ const breathingExercises = [
     inhaleTimeInSeconds: 5,
     holdTimeOne: 7,
     exhaleTimeInSeconds: 8,
-    holdTimeTwo: 0
+    holdTimeTwo: 0,
+    bgColor: "teal"
   },
   {
     name: "Energy Boost",
@@ -27,7 +29,8 @@ const breathingExercises = [
     inhaleTimeInSeconds: 8,
     holdTimeOne: 0,
     exhaleTimeInSeconds: 1,
-    holdTimeTwo: 0
+    holdTimeTwo: 0,
+    bgColor: "darkorange"
   },
   {
     name: "Deep Calm",
@@ -35,7 +38,8 @@ const breathingExercises = [
     inhaleTimeInSeconds: 6,
     holdTimeOne: 0,
     exhaleTimeInSeconds: 9,
-    holdTimeTwo: 0
+    holdTimeTwo: 0,
+    bgColor: "midnightblue"
   },
   {
     name: "Sleep",
@@ -43,18 +47,22 @@ const breathingExercises = [
     inhaleTimeInSeconds: 7,
     holdTimeOne: 7,
     exhaleTimeInSeconds: 9,
-    holdTimeTwo: 0
+    holdTimeTwo: 0,
+    bgColor: "burlywood"
   }
 ];
 
-let breathingStyle = breathingExercises.find(style => style.name.toLowerCase() === selection)
-document.getElementById("directions").innerHTML = breathingStyle["description"]
+let breathingStyle = breathingExercises.find(style => style.name.toLowerCase() === selection);
+document.getElementById("directions").innerHTML = breathingStyle["description"];
 dropDown.addEventListener('change', function() {
   const selectedStyle = dropDown.value;
   breathingStyle = breathingExercises.find(style => style.name.toLowerCase() === selectedStyle.toLowerCase());
-  document.getElementById("directions").innerHTML = breathingStyle["description"]
+  document.getElementById("directions").innerHTML = breathingStyle["description"];
+  document.querySelector(".outer-circle").style.backgroundColor = breathingStyle.bgColor;
   console.log(breathingStyle)
+  
 });
+
 
 //need to fix inner circle transistion durations
 

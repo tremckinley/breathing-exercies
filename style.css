@@ -1,8 +1,13 @@
+:root {
+  --ogpurple: #7c3aed;
+  --ogpurpborder: #2e1065;
+  --oglightpurple: #6366f1;
+}
+
 html {
   background-color: slategray;
   display: flex;
   justify-content: center;
-  padding: 0;
   height: 100vh;
 }
 
@@ -13,7 +18,7 @@ body {
   font-family: Verdana, sans-serif;
   text-align: center;
   max-width: 1200px;
-  margin: 10px 0 0 0;
+  margin: 10px 10px 0 10px;
   height: 95vh;
   box-shadow: 1px 1px 4px black;
   border-radius: 10px;
@@ -27,7 +32,8 @@ select {
   margin-left: 10px;
   border-radius: 10px;
   display: inline;
-  padding: 0px 0 2px 0;
+  padding: 4px 10px;
+  
 }
 
 select::after {
@@ -48,7 +54,7 @@ option {
   align-items: center;
   height: 18em;
   width: 18em;
-  background: #7c3aed;
+  background: teal;
   border-radius: 100%;
   border: #2e1065 2px solid;
    
@@ -72,12 +78,13 @@ option {
   justify-content: center;
   align-items: center;
   color: white;
-  font-weight: bold;
+  font-family: monospace;
+  font-weight: 600;
   text-align: center;
   font-size: 18px;
   height: 6rem;
   width: 6rem;
-  background: #6366f1;
+  background:var(--oglightpurple);
   border-radius: 100%;
   border: #2e1065 2px solid;
   cursor: pointer;
@@ -97,26 +104,30 @@ option {
   margin-top: 2em;
 }
 
-footer {
-  margin-top: 125px;
-}
 
 #restart {
   color: white;
-  background-color: #2e1065;
+  background-color: var(--oglightpurple);
   justify-self: center;
   width: fit-content;
   padding: 10px;
-  font-weight: bold;
+  font-family: monospace;
+  font-weight: 600;
+  font-size: large;
   cursor: pointer;
   border-radius: 10px;
-  border: 2px solid #7c3aed;
-  box-shadow: 0px 0px 2px black;
+  border: 2px solid var(--ogpurpborder);
+  box-shadow: 1px 1px 0px rgb(0 0 0 / 0.5);
 }
 
 #restart:hover {
   background-color: #7c3aed;
   border: 2px solid #2e1065
+}
+
+#restart:active {
+  margin-top: 1.1em;
+  margin-bottom: 0.9em;
 }
 
 #breathing-exercise-selector {
@@ -129,7 +140,7 @@ footer {
   display: none;
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 476px) {
 
   h1 {
     font-size: 25px;
@@ -139,7 +150,7 @@ footer {
     display: block;
     font-size: 30px;
     line-height: 0%;
-    margin: 30px 0;
+    margin: 40px 0 30px 0;
   }
 
   .wide-icons {
@@ -147,17 +158,23 @@ footer {
   }
 
   .instructions {
-    margin: 40px;
+    margin: 30px;
   }
 
   body {
+    max-width: 100%;
+    width: 100%;
     margin: 0;
     height: 100%;
     border-radius: 0;
+    padding: 0px;
   }
   
-  footer {
-    margin-top: 3em;
+}
+
+@media screen and (max-width: 730px) {
+  h1 {
+    font-size: 20px;
   }
 
 }
