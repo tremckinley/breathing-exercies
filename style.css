@@ -16,6 +16,7 @@ body {
   color: darkslategray;
   padding: 25px;
   font-family: Verdana, sans-serif;
+  font-weight: 500;
   text-align: center;
   max-width: 1200px;
   margin: 10px 10px 0 10px;
@@ -23,6 +24,18 @@ body {
   box-shadow: 1px 1px 4px black;
   border-radius: 10px;
   padding-bottom: 0%;
+}
+
+p {
+  font-size: large;
+}
+
+header {
+  background-color: gainsboro;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px;
 }
 
 select {
@@ -33,11 +46,8 @@ select {
   border-radius: 10px;
   display: inline;
   padding: 4px 10px;
+  box-shadow: 0px 3px 4px;
   
-}
-
-select::after {
-  font-size: x-large;
 }
 
 option {
@@ -57,6 +67,7 @@ option {
   background: teal;
   border-radius: 100%;
   border: #2e1065 2px solid;
+  box-shadow: 0px 4px 4px;
    
 }
 
@@ -168,6 +179,15 @@ option {
     height: 100%;
     border-radius: 0;
     padding: 0px;
+  }
+
+  header {
+    background-color: gainsboro;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0px;
+    box-shadow: none;
   }
   
 }
