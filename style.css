@@ -28,6 +28,7 @@ body {
 
 p {
   font-size: large;
+  font-weight: bold;
 }
 
 header {
@@ -38,16 +39,13 @@ header {
   box-shadow: 0px 4px 4px;
 }
 
-select {
-  font: inherit;
-  text-align: center;
-  background-color: white;
-  margin-left: 10px;
-  border-radius: 10px;
-  display: inline;
-  padding: 4px 10px;
-  box-shadow: 0px 3px 4px;
-  
+input.selector {
+ font-size: x-large; 
+font-weight: bold;
+font-family: monospace;
+padding: 10px 0 10px 10px;
+box-shadow: none;
+margin: 4px;
 }
 
 option {
@@ -56,6 +54,15 @@ option {
 
 .instructions {
   margin: 50px 0 40px 0;
+}
+
+#directions {
+  color: white; 
+  background-color: var(--oglightpurple); 
+  padding: 5px 0;
+  border-radius: 10px;
+  border: 1px solid rgb(0 0 0 / 0.5);
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 0.5);
 }
 
 .outer-circle {
@@ -115,6 +122,10 @@ option {
   margin-top: 2em;
 }
 
+#breathing-time-selector {
+  font-family: monospace;
+  font-size: x-large;
+}
 
 #restart {
   color: white;
@@ -141,10 +152,21 @@ option {
   margin-bottom: 0.9em;
 }
 
-#breathing-exercise-selector {
+#custom-input {
+  display: none;
+  margin: 0 auto;
+}
+
+.selector {
   background-color: gainsboro;
   font-weight: bold;
   color: darkslategray;
+  font: inherit;
+  text-align: center;
+  border-radius: 10px;
+  display: inline;
+  padding: 4px;
+  box-shadow: 0px 3px 4px;
 }
 
 .mobile-icons {

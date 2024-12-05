@@ -18,14 +18,31 @@
   </header>
   <section class="instructions">
     <p>Select your breathing exercise:</p>
-    <h2><select id="breathing-exercise-selector" name="breathing-exercise">
+    <h2><select class="selector" id="breathing-exercise-selector" name="breathing-exercise">
       <option value="relaxation">Relaxation</option>
       <option value="focus">Focus</option>
       <option value="energy boost">Energy Boost</option>
       <option value="deep calm">Deep Calm</option>
       <option value="sleep">Sleep</option>
+      <option value="custom">Custom</option>
     </select></h2>
     <p id="directions"></p>
+  <div id="custom-input">
+    <label for="quantity">Inhale</label>
+  <input class="selector" type="number" id="inhale" name="inhale" min="1" max="9">
+  <label for="quantity">Hold (optional)</label>
+  <input class="selector" type="number" id="hold1" name="hold1" min="0" max="9"><br>
+  <label for="quantity">Exhale</label>
+  <input class="selector" type="number" id="exhale" name="exhale" min="1" max="9">
+  <label for="quantity">Hold (optional)</label>
+  <input class="selector" type="number" id="hold2" name="hold2" min="0" max="9"><br>
+  </div>
+    <p>Select exercise length:</p>
+    <select class="selector" id="breathing-time-selector" name="breathing-time">
+      <option value="1">1 min</option>
+      <option value="3">3 mins</option>
+      <option value="5">5 mins</option>
+    </select>
   </section>
   <div class="circle-container">
     <div class="outer-circle">
