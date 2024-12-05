@@ -1,7 +1,10 @@
 # focus-breathing-timer
-Self-created mini-project to create a version of a breathing timer that I enjoy. The orignal code was written in Codecademy's workspaces with limited linters and auto-fill code.
+Original mini-project: A mindful breathing timer for myself and others. The orignal code was written in Codecademy's workspaces with limited linters or auto-fill code as a way to test applying different transistions. 
 
-UPGRADES: Added multiple timers and enhanced the styling
+**VERSION 2.0**: Added multiple timers and enhanced the styling
+
+## Screenshot
+![](focusbreathing.png)
 
 ## Inspiration
 I've gotten so much benefit out of mindfulness training that I decided to recreate a focus breathing timer. I've seen these on apps and knew that I could create it. This was an effort to ensure my vanilla HTML/CSS/JS stays sharp.
@@ -23,5 +26,11 @@ This function took the next line of code as the first argument, and the time it 
 
 I was proud of finding a solution rather quickly, as if it was a self-imposed coding challenge.
 
-Thank you!
-Tremaine
+## Additional Features
+After reaching an initial done state, I decided to build upon this project to make a more usable product I added:
+- A time option to breathe for 1, 3, or 5 minutes
+- Addtional types of breathing (Relaxation, Energy, Sleep)
+- Enhanced accessibilty features
+- Improved visual appeal
+
+__Thank you!__
