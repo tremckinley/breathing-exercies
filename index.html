@@ -1,36 +1,78 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <head>
+    <title>Breathing Exercise</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <title>Breathing Exercise</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="style.css" rel="stylesheet">
-
-</head>
-
-<body>
-  <header>
-    <h1> &#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F; Focus Breathing &#127919;</h1>
-    <p>&#127811;Follow along with the timer to focus breathe.&#127811;</p>
-  </header>
-
-  <div class="circle-container">
-    <div class="outer-circle">
-
-      <div class="inner-circle" id="inner-circle">
-        <button class="counter" id="counter">Start</button>
+  <body>
+    <header role="banner">
+      <!--icons on mobile -->
+      <p class="mobile-icons">
+        &#128564;&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;&#128293;&#127919;
+      </p>
+      <h1>
+        <span class="wide-icons"
+          >&#128564;&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;</span
+        >
+        Breathing Exercise Timer
+        <span class="wide-icons">&#128293;&#127919;</span>
+      </h1>
+    </header>
+    <section class="instructions">
+      <p>
+        <label for="breathing-exercise-selector"
+          >Select your breathing exercise:</label
+        >
+      </p>
+      <h2>
+        <select
+          class="selector"
+          id="breathing-exercise-selector"
+          name="breathing-exercise"
+        >
+          <option value="relaxation">Relaxation</option>
+          <option value="focus">Focus</option>
+          <option value="energy boost">Energy Boost</option>
+          <option value="deep calm">Deep Calm</option>
+          <option value="sleep">Sleep</option>
+        </select>
+      </h2>
+      <!-- Content dynamically injected with HTML -->
+      <p id="directions"></p>
+      <p>
+        <label for="breathing-time-selector">Select exercise length:</label>
+      </p>
+      <select
+        class="selector"
+        id="breathing-time-selector"
+        name="breathing-time"
+      >
+        <option value="1">1 min</option>
+        <option value="3">3 mins</option>
+        <option value="5">5 mins</option>
+      </select>
+    </section>
+    <div class="circle-container" role="main">
+      <div class="outer-circle">
+        <div class="inner-circle" id="inner-circle">
+          <button class="counter" id="counter">Start</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <p id="restart">Restart</p>
-  </div>
+    <!-- Reloads the page -->
+    <p><button id="restart">Restart</button></p>
 
-  <script src="script.js"></script>
-</body>
-<footer>
-  Mini-project created by <a href="https://www.linkedin.com/in/tremaine-mckinley/" target="_blank"
-    id="signature">Tremaine McKinley</a>
-</footer>
-
+    <script src="script.js"></script>
+    <footer role="contentinfo">
+      Mini-project created by
+      <a
+        href="https://www.linkedin.com/in/tremaine-mckinley/"
+        target="_blank"
+        id="signature"
+        >Tremaine McKinley</a
+      >
+    </footer>
+  </body>
 </html>
