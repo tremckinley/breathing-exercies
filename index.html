@@ -7,55 +7,40 @@
   </head>
 
   <body>
+    <div class="container">
     <header role="banner">
-      <!--icons on mobile -->
-      <!-- <p class="mobile-icons">
-        &#128564;&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;&#128293;&#127919;
-      </p> -->
+    
       <h1>
-        <!-- <span class="wide-icons"
-          >&#128564;&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;</span
-        > -->
+
         Breathing Exercises
-        <!-- <span class="wide-icons">&#128293;&#127919;</span> -->
       </h1>
     </header>
-    <section class="instructions">
-
-      <!-- <h2>
-        <select
-          class="selector"
-          id="breathing-exercise-selector"
-          name="breathing-exercise"
-        >
-          <option value="relaxation">Relaxation</option>
-          <option value="focus">Focus</option>
-          <option value="energy boost">Energy Boost</option>
-          <option value="deep calm">Deep Calm</option>
-          <option value="sleep">Sleep</option>
-        </select>
-      </h2> 
+    <div class="form-container">
+      <form>
+          <div class="form-group" id="style-selector">
+              <label for="exercise">Select your breathing exercise:</label>
+              <select id="exercise" name="exercise">
+                  <option value="focus">Focus</option>
+                  <option value="relaxation">Relaxation</option>
+                  <option value="energy_boost">Energy Boost</option>
+                  <option value="deep_calm">Deep Calm</option>
+                  <option value="sleep">Sleep</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>Select exercise length:</label>
+              <div class="radio-group" id="breathing-time-selector">
+                  <label><input type="radio" name="length" value="1" checked> 1 min</label>
+                  <label><input type="radio" name="length" value="3"> 3 mins</label>
+                  <label><input type="radio" name="length" value="5"> 5 mins</label>
+              </div>
+          </div>
+          
+      </form>
+      <div class="directions-container">
       <p id="directions"></p>
-      <p>
-        <label for="breathing-time-selector">Select exercise length:</label>
-      </p>
-      <select
-        class="selector"
-        id="breathing-time-selector"
-        name="breathing-time"
-      >
-        <option value="1">1 min</option>
-        <option value="3">3 mins</option>
-        <option value="5">5 mins</option>
-      </select>
-    </section> -->
-    <form>
-      <p>
-        <label for="breathing-exercise-selector"
-          >Select your breathing exercise:</label
-        >
-      </p>      
-    </form>
+    </div>
+  </div>
     <div class="circle-container" role="main">
       <div class="outer-circle">
         <div class="inner-circle" id="inner-circle">
@@ -65,7 +50,6 @@
     </div>
     <!-- Reloads the page -->
     <p><button id="restart">Restart</button></p>
-
     <script src="script.js"></script>
     <footer role="contentinfo">
       Mini-project created by
@@ -76,5 +60,6 @@
         >Tremaine McKinley</a
       >
     </footer>
+  </div>
   </body>
 </html>

@@ -1,10 +1,9 @@
 const startButton = document.getElementById("counter");
 const innerCircle = document.getElementById("inner-circle");
 const title = document.querySelector("h1");
-const dropDown = document.getElementById("breathing-exercise-selector");
-const timeDropDown = document.getElementById("breathing-time-selector");
+const dropDown = document.getElementById("exercise");
 let selection = dropDown.value;
-let selectedTime = timeDropDown.value;
+let selectedTime = document.querySelector('input[name="length"]:checked').value;
 
 const breathingExercises = [
   {
@@ -15,7 +14,7 @@ const breathingExercises = [
     holdTimeOne: 4,
     exhaleTimeInSeconds: 4,
     holdTimeTwo: 4,
-    bgColor: "#7c3aed",
+    bgColor: "url('./backgrounds/bullseye.png')",
   },
   {
     name: "Relaxation",
@@ -24,26 +23,26 @@ const breathingExercises = [
     holdTimeOne: 7,
     exhaleTimeInSeconds: 8,
     holdTimeTwo: 0,
-    bgColor: "teal",
+    bgColor: "url('./backgrounds/zen_garden.jpg')"
   },
   {
-    name: "Energy Boost",
+    name: "Energy_Boost",
     description: "&#128293;Increase alertness and energy!&#128293;",
     inhaleTimeInSeconds: 8,
     holdTimeOne: 0,
     exhaleTimeInSeconds: 1,
     holdTimeTwo: 0,
-    bgColor: "darkorange",
+    bgColor: "url('./backgrounds/burn.png')",
   },
   {
-    name: "Deep Calm",
+    name: "Deep_Calm",
     description:
       "&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;Enter a state of deep relaxation.&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;",
     inhaleTimeInSeconds: 6,
     holdTimeOne: 0,
     exhaleTimeInSeconds: 9,
     holdTimeTwo: 0,
-    bgColor: "midnightblue",
+    bgColor: "url('./backgrounds/space.png')",
   },
   {
     name: "Sleep",
@@ -52,14 +51,17 @@ const breathingExercises = [
     holdTimeOne: 7,
     exhaleTimeInSeconds: 9,
     holdTimeTwo: 0,
-    bgColor: "burlywood",
+    bgColor: "url('./backgrounds/bedroom.png')",
   },
 ];
 
 let breathingStyle = breathingExercises.find(
   (style) => style.name.toLowerCase() === selection
 );
+
 document.getElementById("directions").innerHTML = breathingStyle["description"];
+document.querySelector(".container").style.backgroundImage =
+    breathingStyle.bgColor;
 
 //Event Listener to change style
 dropDown.addEventListener("change", function () {
@@ -67,18 +69,11 @@ dropDown.addEventListener("change", function () {
   breathingStyle = breathingExercises.find(
     (style) => style.name.toLowerCase() === selection.toLowerCase()
   );
-  document.getElementById("directions").innerHTML =
-    breathingStyle["description"];
-  document.querySelector(".outer-circle").style.background =
+   document.getElementById("directions").innerHTML =
+     breathingStyle["description"];
+  document.querySelector(".container").style.backgroundImage =
     breathingStyle.bgColor;
   //console.log(breathingStyle)
-});
-
-//Event Listener to change time
-timeDropDown.addEventListener("change", function () {
-  //convert minutes to milliseconds
-  selectedTime = timeDropDown.value;
-  //console.log(selectedTime)
 });
 
 
@@ -109,12 +104,12 @@ function activateTimer(exercise) {
   exhaleTimeInSeconds = exercise.exhaleTimeInSeconds;
   holdTimeTwo = exercise.holdTimeTwo;
 
-  /*console.log(
-    exercise.inhaleTimeInSeconds,
-    exercise.exhaleTimeInSeconds,
-    exercise.holdTimeOne,
-    exercise.holdTimeTwo
-  );*/
+  // console.log(
+  //   exercise.inhaleTimeInSeconds,
+  //   exercise.exhaleTimeInSeconds,
+  //   exercise.holdTimeOne,
+  //   exercise.holdTimeTwo
+  // );
 
   counter.innerHTML = "Let's Begin";
   nextLine(() => (counter.innerHTML = "3"), 1);
@@ -163,6 +158,7 @@ function activateTimer(exercise) {
 startButton.onclick = () => {
   if (counter.innerHTML == "Start" || counter.innerHTML == "Great Job") {
     //console.log("breathing:", breathingStyle);
+    selectedTime = document.querySelector('input[name="length"]:checked').value;
     activateTimer(breathingStyle);
     dropDown.style.pointerEvents = "none";
     dropDown.style.appearance = "none";

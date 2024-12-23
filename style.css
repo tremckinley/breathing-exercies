@@ -4,6 +4,8 @@
   --oglightpurple: #6366f1;
 }
 
+/* Body styles */
+
 html {
   display: flex;
   justify-content: center;
@@ -12,7 +14,11 @@ html {
 }
 
 body {
-  background: skyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: gainsboro;
   color: darkslategray;
   font-family: Verdana, sans-serif;
   font-weight: 500;
@@ -25,40 +31,98 @@ body {
 
 p {
   font-size: large;
-  
 }
 
-header {
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: skyblue; */
+  height: 100vh;
+  width: 100vh;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 3em;
   background-color: gainsboro;
+  padding: 1rem;
+}
+
+footer {
+  background-color: whitesmoke;
   padding: 5px;
+  width: 30rem;
+}
+
+.mobile-icons {
+  display: none;
+}
+
+/* End body styles */
+
+/* Form styles */
+.form-container {
+  background-color: gainsboro;
   border: 1px solid;
+  border-radius: 12px;
   box-shadow: 0px 2px 2px;
+  overflow: clip;
+  width: 30em;
+  margin-top: 2em;
+}
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-input.selector {
- font-size: x-large; 
-font-weight: bold;
-font-family: monospace;
-padding: 10px 0 10px 10px;
-box-shadow: none;
-margin: 4px;
+form {
+  display: flex;
+  margin: 20px 20px 10px 20px;
 }
 
-option {
-  font-size: small;
+#style-selector {
+  width: 60%;
+  margin-right: 40px;
 }
 
-.instructions {
-  margin: 50px 0 40px 0;
+#exercise {
+  width: fit-content;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.radio-group {
+  display: flex;
+}
+
+.radio-group label {
+  font-weight: normal;
+  font-size: large;
 }
 
 #directions {
-  color: white; 
-  background-color: var(--oglightpurple); 
-  padding: 5px 0;
-  border: 1px solid rgb(0 0 0 / 0.5);
-  box-shadow: 0px 0px 4px rgb(0 0 0 / 0.5);
+  font-weight: bold;
+  margin: 0;
+  padding: 5px;
+  border-top: 2px solid;
 }
+/* End form styles */
+
+/* Circle styles */
 
 .outer-circle {
   display: flex;
@@ -70,7 +134,6 @@ option {
   border-radius: 100%;
   border: #2e1065 2px solid;
   box-shadow: 0px 4px 4px;
-   
 }
 
 .inner-circle {
@@ -79,7 +142,7 @@ option {
   align-items: center;
   height: 6rem;
   width: 6rem;
-  background: #FFFFFF90;
+  background: #ffffff90;
   border-radius: 100%;
   transition: height width;
   /* transition-duration: 4000ms; */
@@ -97,7 +160,7 @@ option {
   font-size: 18px;
   height: 6rem;
   width: 6rem;
-  background:var(--oglightpurple);
+  background: var(--oglightpurple);
   border-radius: 100%;
   border: #2e1065 2px solid;
   cursor: pointer;
@@ -117,10 +180,9 @@ option {
   margin-top: 2em;
 }
 
-#breathing-time-selector {
-  font-family: monospace;
-  font-size: x-large;
-}
+/* End circle styles */
+
+/* Restart button styles */
 
 #restart {
   color: white;
@@ -139,7 +201,7 @@ option {
 
 #restart:hover {
   background-color: #7c3aed;
-  border: 2px solid #2e1065
+  border: 2px solid #2e1065;
 }
 
 #restart:active {
@@ -147,46 +209,26 @@ option {
   margin-bottom: 0.9em;
 }
 
-#custom-input {
-  display: none;
-  margin: 0 auto;
-}
+/* End restart button styles */
 
-.selector {
-  background-color: gainsboro;
-  font-weight: bold;
-  color: darkslategray;
-  font: inherit;
-  text-align: center;
-  border-radius: 10px;
-  display: inline;
-  padding: 4px;
-  box-shadow: 0px 3px 4px;
-}
-
-.mobile-icons {
-  display: none;
-}
+/* Mobile Styles */
 
 @media screen and (max-width: 476px) {
-
-  h1 {
-    font-size: 25px;
+  body {
+    overflow: hidden;
   }
 
-  .mobile-icons {
-    display: block;
-    font-size: 30px;
-    line-height: 0%;
-    margin: 40px 0 30px 0;
+  form {
+    font-size: small;
+    padding: 0 2em;
   }
 
-  .wide-icons {
-    display: none;
+  .radio-group label {
+    font-size: medium;
   }
 
-  .instructions {
-    margin: 30px;
+  #directions {
+    font-size: small;
   }
 
   body {
@@ -205,13 +247,14 @@ option {
     border-bottom: 1px solid;
     border-radius: 0px;
     box-shadow: none;
+    width: 100%;
   }
-  
 }
 
 @media screen and (max-width: 730px) {
   h1 {
-    font-size: 20px;
+    font-size: 2em;
   }
-
 }
+
+/* End mobile Styles */
