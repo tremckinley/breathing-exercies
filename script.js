@@ -2,6 +2,7 @@ const startButton = document.getElementById("counter");
 const innerCircle = document.getElementById("inner-circle");
 const title = document.querySelector("h1");
 const dropDown = document.getElementById("exercise");
+const beep = new Audio("./beeps.mp3")
 let selection = dropDown.value;
 let selectedTime = document.querySelector('input[name="length"]:checked').value;
 
@@ -112,6 +113,7 @@ function activateTimer(exercise) {
   // );
 
   counter.innerHTML = "Let's Begin";
+  beep.play()
   nextLine(() => (counter.innerHTML = "3"), 1);
   nextLine(() => (counter.innerHTML = "2"), 1);
   nextLine(() => (counter.innerHTML = "1"), 1);
