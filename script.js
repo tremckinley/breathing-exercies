@@ -2,7 +2,9 @@ const startButton = document.getElementById("counter");
 const innerCircle = document.getElementById("inner-circle");
 const title = document.querySelector("h1");
 const dropDown = document.getElementById("exercise");
-const beep = new Audio("./beeps.mp3")
+const beep = new Audio("./sounds/3_beeps.mp3")
+const inhaleSound = new Audio("./sounds/inhale.mp3")
+const exhaleSound = new Audio("./sounds/exhale.mp3")
 let selection = dropDown.value;
 let selectedTime = document.querySelector('input[name="length"]:checked').value;
 
@@ -79,12 +81,14 @@ dropDown.addEventListener("change", function () {
 
 
 function fillBar(transTime) {
+  inhaleSound.play()
   innerCircle.style.transitionDuration = `${transTime}s`;
   innerCircle.style.height = "18em";
   innerCircle.style.width = "18em";
 }
 
 function emptyBar(transTime) {
+  exhaleSound.play()
   innerCircle.style.transitionDuration = `${transTime}s`;
   innerCircle.style.height = "6em";
   innerCircle.style.width = "6em";
@@ -113,8 +117,11 @@ function activateTimer(exercise) {
   // );
 
   counter.innerHTML = "Let's Begin";
-  beep.play()
-  nextLine(() => (counter.innerHTML = "3"), 1);
+  
+  nextLine(() => {
+    beep.play()
+    counter.innerHTML = "3"
+  }, 1);
   nextLine(() => (counter.innerHTML = "2"), 1);
   nextLine(() => (counter.innerHTML = "1"), 1);
 
