@@ -1,10 +1,20 @@
 const startButton = document.getElementById("counter");
 const innerCircle = document.getElementById("inner-circle");
 const title = document.querySelector("h1");
-const dropDown = document.getElementById("breathing-exercise-selector");
-const timeDropDown = document.getElementById("breathing-time-selector");
+const dropDown = document.getElementById("exercise");
+const inhaleSound = new Audio("./sounds/inhale.mp3")
+const exhaleSound = new Audio("./sounds/exhale.mp3")
+const endSound = new Audio("./sounds/two-chimes.mp3")
 let selection = dropDown.value;
-let selectedTime = timeDropDown.value;
+let selectedTime = document.querySelector('input[name="length"]:checked').value;
+const bellSound = new Audio("./sounds/3min-bell.mp3")
+let timeoutIds = []
+
+function playBell() {
+  bellSound.play()
+  setTimeout(() => {bellSound.pause()}, 3000)
+  
+}
 
 const breathingExercises = [
   {
@@ -15,7 +25,7 @@ const breathingExercises = [
     holdTimeOne: 4,
     exhaleTimeInSeconds: 4,
     holdTimeTwo: 4,
-    bgColor: "#7c3aed",
+    bgColor: "url('./backgrounds/bullseye.png')",
   },
   {
     name: "Relaxation",
@@ -24,26 +34,26 @@ const breathingExercises = [
     holdTimeOne: 7,
     exhaleTimeInSeconds: 8,
     holdTimeTwo: 0,
-    bgColor: "teal",
+    bgColor: "url('./backgrounds/zen_garden.jpg')"
   },
   {
-    name: "Energy Boost",
+    name: "Energy_Boost",
     description: "&#128293;Increase alertness and energy!&#128293;",
     inhaleTimeInSeconds: 8,
     holdTimeOne: 0,
     exhaleTimeInSeconds: 1,
     holdTimeTwo: 0,
-    bgColor: "darkorange",
+    bgColor: "url('./backgrounds/burn.png')",
   },
   {
-    name: "Deep Calm",
+    name: "Deep_Calm",
     description:
       "&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;Enter a state of deep relaxation.&#x1F9D8;&#x1F3FF;&#x200D;&#x2642;&#xFE0F;",
     inhaleTimeInSeconds: 6,
     holdTimeOne: 0,
     exhaleTimeInSeconds: 9,
     holdTimeTwo: 0,
-    bgColor: "midnightblue",
+    bgColor: "url('./backgrounds/space.png')",
   },
   {
     name: "Sleep",
@@ -52,14 +62,17 @@ const breathingExercises = [
     holdTimeOne: 7,
     exhaleTimeInSeconds: 9,
     holdTimeTwo: 0,
-    bgColor: "burlywood",
+    bgColor: "url('./backgrounds/bedroom.png')",
   },
 ];
 
 let breathingStyle = breathingExercises.find(
   (style) => style.name.toLowerCase() === selection
 );
+
 document.getElementById("directions").innerHTML = breathingStyle["description"];
+document.querySelector(".container").style.backgroundImage =
+    breathingStyle.bgColor;
 
 //Event Listener to change style
 dropDown.addEventListener("change", function () {
@@ -67,28 +80,23 @@ dropDown.addEventListener("change", function () {
   breathingStyle = breathingExercises.find(
     (style) => style.name.toLowerCase() === selection.toLowerCase()
   );
-  document.getElementById("directions").innerHTML =
-    breathingStyle["description"];
-  document.querySelector(".outer-circle").style.background =
+   document.getElementById("directions").innerHTML =
+     breathingStyle["description"];
+  document.querySelector(".container").style.backgroundImage =
     breathingStyle.bgColor;
   //console.log(breathingStyle)
 });
 
-//Event Listener to change time
-timeDropDown.addEventListener("change", function () {
-  //convert minutes to milliseconds
-  selectedTime = timeDropDown.value;
-  //console.log(selectedTime)
-});
-
 
 function fillBar(transTime) {
+  inhaleSound.play()
   innerCircle.style.transitionDuration = `${transTime}s`;
   innerCircle.style.height = "18em";
   innerCircle.style.width = "18em";
 }
 
 function emptyBar(transTime) {
+  exhaleSound.play()
   innerCircle.style.transitionDuration = `${transTime}s`;
   innerCircle.style.height = "6em";
   innerCircle.style.width = "6em";
@@ -97,8 +105,9 @@ function emptyBar(transTime) {
 function activateTimer(exercise) {
   //function for calling repeated setTimeout functions. time is added to the same variable to mimmick a sleep function cleanly. seconds variable is multiplied by 1000 to simplify the argument.
   let milliseconds = 1000;
+  innerCircle.style.transition = "inherit";
   function nextLine(action, seconds) {
-    setTimeout(action, milliseconds);
+    timeoutIds.push(setTimeout(action, milliseconds));
     milliseconds += seconds * 1000;
   }
 
@@ -109,15 +118,19 @@ function activateTimer(exercise) {
   exhaleTimeInSeconds = exercise.exhaleTimeInSeconds;
   holdTimeTwo = exercise.holdTimeTwo;
 
-  /*console.log(
-    exercise.inhaleTimeInSeconds,
-    exercise.exhaleTimeInSeconds,
-    exercise.holdTimeOne,
-    exercise.holdTimeTwo
-  );*/
+  // console.log(
+  //   exercise.inhaleTimeInSeconds,
+  //   exercise.exhaleTimeInSeconds,
+  //   exercise.holdTimeOne,
+  //   exercise.holdTimeTwo
+  // );
 
   counter.innerHTML = "Let's Begin";
-  nextLine(() => (counter.innerHTML = "3"), 1);
+  
+  nextLine(() => {
+    playBell()
+    counter.innerHTML = "3"
+  }, 1);
   nextLine(() => (counter.innerHTML = "2"), 1);
   nextLine(() => (counter.innerHTML = "1"), 1);
 
@@ -152,24 +165,36 @@ function activateTimer(exercise) {
     }, holdTimeTwo);
   }
   //End with a compliment
-  nextLine(() => (counter.innerHTML = "Great Job"), 1);
+  nextLine(() => {
+    endSound.play()
+    counter.innerHTML = "Great Job"
+  }, 1);
   nextLine(() => {
     dropDown.style.pointerEvents = "all";
     dropDown.style.appearance = "";
   }, 1);
+  console.log(timeoutIds)
 }
 
 // activate on button click
 startButton.onclick = () => {
   if (counter.innerHTML == "Start" || counter.innerHTML == "Great Job") {
     //console.log("breathing:", breathingStyle);
+    selectedTime = document.querySelector('input[name="length"]:checked').value;
     activateTimer(breathingStyle);
     dropDown.style.pointerEvents = "none";
     dropDown.style.appearance = "none";
-  }
+  } 
 };
 
 //restart button
 document.getElementById("restart").onclick = () => {
-  location.reload();
+  timeoutIds.forEach(timeoutId => clearTimeout(timeoutId));
+  timeoutIds = []
+  dropDown.style.pointerEvents = "all";
+  dropDown.style.appearance = "";
+  counter.innerHTML = "Start"
+  innerCircle.style.transition = "none";
+  innerCircle.style.height = "6em";
+  innerCircle.style.width = "6em";
 };
